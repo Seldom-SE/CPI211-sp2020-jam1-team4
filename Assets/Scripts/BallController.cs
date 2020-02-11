@@ -11,25 +11,31 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     public GameObject ballObj;
-    private Rigidbody _ballRigidBody
+    private Rigidbody _ballRigidbody
     {
         get
         {
             return ballObj.GetComponent<Rigidbody>();
         }
     }
+    /**
+     * This is a gameobject that follows the ball's position. 
+     * As a child, the camera is then able to follow the ball 
+     * and rotating this obj will rotate the camera but not the ball
+     */
+    public GameObject ballFollower;
     public GameObject cameraObj;
 
     public float movementSpeed = 1f;
-    [SerializeField]
-    private float _camAngle;
-    [SerializeField]
-    private float _lookSensitivity = 1f;
+    public float lookSensitivity = 1f;
 
     private void Awake()
     {
         //Locks mouse cursor on screen so player does not see it
         Cursor.lockState = CursorLockMode.Locked;
+
+        //Increases the max velocity as it's initially really low
+        _ballRigidbody.maxAngularVelocity = movementSpeed;
     }
 
     private void FixedUpdate()
@@ -39,31 +45,31 @@ public class BallController : MonoBehaviour
     }
 
     /// <summary>
-    /// Method that controls input for player movement
+    /// Method that controls the balls movement based on player input
     /// </summary>
     private void BallMovement()
     {
         float hInput = Input.GetAxisRaw("Horizontal");
         float vInput = Input.GetAxisRaw("Vertical");
 
-        if(hInput != 0)
-        {
+        //Note: Both use ballfollower.transform because the camera is based on that obj therefore the direction of the follower is (for the most part) the same as the camera
+        if (hInput != 0)
+            _ballRigidbody.angularVelocity += ballFollower.transform.right * movementSpeed * hInput;
 
-        }
+        if(vInput != 0)
+            _ballRigidbody.angularVelocity += ballFollower.transform.forward * movementSpeed * vInput;
     }
 
+    /// <summary>
+    /// Method that controls the camera to follow the ball and rotate based on player input
+    /// </summary>
     private void CameraControl()
     {
-        float mouseY = Input.GetAxis("Mouse Y");
+        //This keeps the camera following the ball
+        ballFollower.transform.position = ballObj.transform.position;
 
-        if(mouseY != 0)
-        {
-            _camAngle += mouseY * _lookSensitivity * Time.deltaTime;
-        }
-
-        if (Mathf.Abs(_camAngle) > 360)
-            _camAngle %= 360;
-
-        print(_camAngle);
+        //Rotates the ball follower based on input. This allows the camera to rotate with the ball follower
+        float mouseX = Input.GetAxis("Mouse X");
+        ballFollower.transform.eulerAngles += new Vector3(0, lookSensitivity * mouseX, 0);
     }
 }

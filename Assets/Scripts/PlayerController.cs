@@ -18,13 +18,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    [SerializeField]
-    private GameObject _playerCam;
+    public GameObject playerCam;
 
-    [SerializeField]
-    private float _lookSensitivity = 1f;
-    [SerializeField]
-    private float _maxVerticalAngle = 60f;
+    public float lookSensitivity = 1f;
+    public float maxVerticalAngle = 60f;
     public float movementSpeed = 1f;
 
     private void Awake()
@@ -57,15 +54,15 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 newRotation = transform.eulerAngles;
             //I added * Time.deltaTime because it generally smoothes things out but wasnt sure if this was an appropriate case. Delete if not
-            newRotation.y += mouseX * _lookSensitivity * Time.deltaTime;
+            newRotation.y += mouseX * lookSensitivity * Time.deltaTime;
             transform.eulerAngles = newRotation;
         }
         //This moves the CAMERA's rotation. This was done to avoid collision issues if the player obj were to rotate
         if (mouseY != 0)
         {
-            Vector3 newRotation = _playerCam.transform.localEulerAngles;
+            Vector3 newRotation = playerCam.transform.localEulerAngles;
             //I added * Time.deltaTime because it generally smoothes things out but wasnt sure if this was an appropriate case. Delete if not
-            newRotation.x += mouseY * _lookSensitivity * -1 * Time.deltaTime;
+            newRotation.x += mouseY * lookSensitivity * -1 * Time.deltaTime;
 
             /**
              * This prevents the player from looking beyond our set _maxVerticalAngle;
@@ -74,8 +71,8 @@ public class PlayerController : MonoBehaviour
              * For example, -5 in the inspector is 355. This is the reason why I have to do two differnt
              * checks
              */
-            if (newRotation.x < _maxVerticalAngle || newRotation.x > 360 - _maxVerticalAngle)
-                _playerCam.transform.localEulerAngles = newRotation;
+            if (newRotation.x < maxVerticalAngle || newRotation.x > 360 - maxVerticalAngle)
+                playerCam.transform.localEulerAngles = newRotation;
         }
     }
 

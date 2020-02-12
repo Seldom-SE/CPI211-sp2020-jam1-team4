@@ -10,6 +10,7 @@ using UnityEngine;
 /// </summary>
 public class BallController : MonoBehaviour
 {
+    [Header("Object References")]
     public GameObject ballObj;
     private Rigidbody _ballRigidbody
     {
@@ -26,6 +27,7 @@ public class BallController : MonoBehaviour
     public GameObject ballFollower;
     public GameObject cameraObj;
 
+    [Header("Movement")]
     public float movementSpeed = 1f;
     public float lookSensitivity = 1f;
 

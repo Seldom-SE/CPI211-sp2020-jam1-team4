@@ -10,6 +10,10 @@ using UnityEngine;
 /// </summary>
 public class BallController : MonoBehaviour
 {
+    void Start()
+    {
+    	GameObject.Find("Player1").GetComponent<PlayerController>().enabled = false;
+    }
     [Header("Object References")]
     public GameObject ballObj;
     private Rigidbody _ballRigidbody

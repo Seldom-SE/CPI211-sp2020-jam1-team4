@@ -202,6 +202,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2080454894835197496}
   - component: {fileID: 2080454894835197497}
+  - component: {fileID: 2131730146574180761}
+  - component: {fileID: 1099179676558815545}
   m_Layer: 0
   m_Name: BowlingBall
   m_TagString: Untagged
@@ -244,6 +246,37 @@ MonoBehaviour:
   movementSpeed: 250
   lookSensitivity: 10
   maxCamHeight: 5
+--- !u!54 &2131730146574180761
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080454894835197499}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1099179676558815545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080454894835197499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9818d7c97d3371d4ca17b6160908c9b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 50, y: 100, z: 100}
+  speed: 100
+  physics: {fileID: 2131730146574180761}
 --- !u!1 &5529876939327027345
 GameObject:
   m_ObjectHideFlags: 0

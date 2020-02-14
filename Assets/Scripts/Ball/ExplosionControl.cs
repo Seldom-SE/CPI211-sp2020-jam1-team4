@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,9 +26,8 @@ public class ExplosionControl : MonoBehaviour
         _pinsInRadius = new List<Rigidbody>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        print(_pinsInRadius.Count);
         Explode();
     }
 

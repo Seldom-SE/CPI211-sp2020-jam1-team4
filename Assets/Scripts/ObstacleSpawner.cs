@@ -33,15 +33,18 @@ public class ObstacleSpawner : MonoBehaviour
             //Random angle to determine where the obstacle will spawn around this gameobject
             float randAngle = Random.Range(0, 2 * Mathf.PI);
 
-            Vector3 spawnPos = transform.position;
-            /**
-             * Got that calc
-             * x = r * cos(theta)
-             * y = r * sin(theta)
-             * Wait was that calc?
-             */
-            spawnPos.x = spawnRadius * Mathf.Cos(randAngle);
-            spawnPos.z = spawnRadius * Mathf.Sin(randAngle);
+            Vector3 spawnPos = new Vector3
+            {
+                /**
+                 * Got that calc
+                 * x = r * cos(theta)
+                 * y = r * sin(theta)
+                 * Wait was that calc?
+                 */
+                x = transform.position.x + spawnRadius * Mathf.Cos(randAngle),
+                y = transform.position.y,
+                z = transform.position.z + spawnRadius * Mathf.Sin(randAngle)
+            };
 
             //Spawns object and waits to spawn a new random one
             Instantiate(obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)], spawnPos, transform.rotation);

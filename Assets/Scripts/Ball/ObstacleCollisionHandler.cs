@@ -12,11 +12,14 @@ public class ObstacleCollisionHandler : MonoBehaviour
 {
     public ExplosionControl explosionControl;
 
+    public float pushBackModifier;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag.Equals("Obstacle"))
         {
-            explosionControl.Explode();
+            //explosionControl.Explode();
+            GetComponent<Rigidbody>().AddForce((transform.position - collision.transform.position) * pushBackModifier);
         }
     }
 }

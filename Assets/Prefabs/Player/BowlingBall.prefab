@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionControl: {fileID: 6396044843051427070}
+  pushBackModifier: 50000
 --- !u!1 &2080454894835197499
 GameObject:
   m_ObjectHideFlags: 0

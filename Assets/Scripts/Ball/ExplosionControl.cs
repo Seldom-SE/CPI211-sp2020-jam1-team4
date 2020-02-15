@@ -15,59 +15,65 @@ using UnityEngine;
 /// </summary>
 public class ExplosionControl : MonoBehaviour
 {
+    public GameObject parentBallObj;    //this is the highest parent obj for the ball
     public GameObject ballObj;  //Reference to the ball obj that is being followed
 
     [Header("Explosion")]
     public float explPower;
-    private List<Rigidbody> _pinsInRadius;
+    private List<Rigidbody> _explodableObjects;
 
     private void Awake()
     {
-        _pinsInRadius = new List<Rigidbody>();
+        _explodableObjects = new List<Rigidbody>();
     }
 
     private void Update()
     {
-        Explode();
+        if (Input.GetMouseButtonDown(0))
+            Explode();
     }
 
     /// <summary>
-    /// Adds a colliding pin into the list
+    /// Adds a colliding pin or obstacle into the list
     /// </summary>
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Pin"))
+        if (other.gameObject.CompareTag("Pin") || other.gameObject.CompareTag("Obstacle"))
         {
-            _pinsInRadius.Add(other.gameObject.GetComponent<Rigidbody>());
+            _explodableObjects.Add(other.gameObject.GetComponent<Rigidbody>());
         }
     }
 
     /// <summary>
-    /// Removes a pin that used to be colliding
+    /// Removes a pin or obstacle that used to be colliding
     /// </summary>
     /// <param name="other"></param>
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Pin") && _pinsInRadius.Contains(other.gameObject.GetComponent<Rigidbody>()))
+        if ((other.gameObject.CompareTag("Pin") || other.gameObject.CompareTag("Obstacle")) && _explodableObjects.Contains(other.gameObject.GetComponent<Rigidbody>()))
         {
-            _pinsInRadius.Remove(other.gameObject.GetComponent<Rigidbody>());
+            _explodableObjects.Remove(other.gameObject.GetComponent<Rigidbody>());
         }
     }
 
     /// <summary>
     /// Method that adds the explosive force to the colliding pins
     /// </summary>
-    private void Explode()
+    public void Explode()
     {
-        if (Input.GetMouseButtonDown(0))
+        
+        foreach (Rigidbody rb in _explodableObjects)
         {
-            foreach (Rigidbody rb in _pinsInRadius)
-            {
-                //Note: I put a 0 for radius to ensure that all balls within the list are being hit by the force
-                //Note: The 3.0 for upward modifier was a default value that I felt looked good. Change if needed/desired
-                rb.AddExplosionForce(explPower, ballObj.transform.position, 0, 3.0f);
-            }
+            //Note: I put a 0 for radius to ensure that all balls within the list are being hit by the force
+            //Note: The 3.0 for upward modifier was a default value that I felt looked good. Change if needed/desired
+            rb.AddExplosionForce(explPower, ballObj.transform.position, 0, 3.0f);
         }
+
+        /**
+         * Transition to player here
+         */
+
+        Destroy(parentBallObj);
     }
 }

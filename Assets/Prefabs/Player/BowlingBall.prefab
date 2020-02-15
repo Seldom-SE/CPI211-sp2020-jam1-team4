@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 2080454894168830874}
   - component: {fileID: 2080454894168830877}
   - component: {fileID: 2080454894168830876}
+  - component: {fileID: 1050836903882707466}
   m_Layer: 0
   m_Name: BallObj
   m_TagString: Untagged
@@ -192,6 +193,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1050836903882707466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080454894168830879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a577a6f82fb1a7a4bb5eb26147fe0bc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionControl: {fileID: 6396044843051427070}
+  pushBackModifier: 50000
 --- !u!1 &2080454894835197499
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,5 +317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0bd523ec26ae2439268f2b92ec4482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentBallObj: {fileID: 2080454894835197499}
   ballObj: {fileID: 2080454894168830879}
   explPower: 1000

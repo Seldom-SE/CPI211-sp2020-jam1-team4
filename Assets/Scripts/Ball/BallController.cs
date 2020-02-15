@@ -91,7 +91,7 @@ public class BallController : MonoBehaviour
         float mouseY = -Input.GetAxis("Mouse Y");
         Vector3 newPos = camObj.transform.position + new Vector3(0, lookSensitivity * mouseY * Time.deltaTime, 0);
         //Clams the y to not go below the ball follower or above the set max height
-        newPos.y = Mathf.Clamp(newPos.y, ballFollower.transform.position.y, maxCamHeight);
+        newPos.y = Mathf.Clamp(newPos.y, ballFollower.transform.position.y, ballFollower.transform.position.y + maxCamHeight);
         camObj.transform.position = newPos;
 
     }

@@ -53,8 +53,7 @@ public class climb : MonoBehaviour
         {
             playerObj.GetComponent<PlayerController>().climbing = true;
             playerObj.GetComponent<Rigidbody>().useGravity = false;
-            playerObj.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;
-            playerObj.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
+            playerObj.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
         }
 
         //go up or down
@@ -77,6 +76,8 @@ public class climb : MonoBehaviour
 
         //remove constraints and set player climbing to false because they are no longer climbing
         playerObj.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        playerObj.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
+
         playerObj.GetComponent<PlayerController>().climbing = false;
         
         //gravity exists again

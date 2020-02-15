@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject playerCam;
 
+    public bool climbing = false;//added boolean climbing to know when we're climbing
     public float lookSensitivity = 1f;
     public float maxVerticalAngle = 60f;
     public float movementSpeed = 1f;
@@ -83,15 +84,25 @@ public class PlayerController : MonoBehaviour
     {
         float hInput = Input.GetAxisRaw("Horizontal");
         float vInput = Input.GetAxisRaw("Vertical");
-
-        if (hInput != 0)
+        
+        //only use this if we're not climbing something
+        if (climbing == false)
         {
-            transform.position += transform.right * Mathf.Sign(hInput) * movementSpeed * Time.deltaTime;
-        }
 
-        if (vInput != 0)
-        {
-            transform.position += transform.forward * Mathf.Sign(vInput) * movementSpeed * Time.deltaTime;
+            if (hInput != 0)
+            {
+                transform.position += transform.right * Mathf.Sign(hInput) * movementSpeed * Time.deltaTime;
+            }
+
+            if (vInput != 0)
+            {
+                transform.position += transform.forward * Mathf.Sign(vInput) * movementSpeed * Time.deltaTime;
+            }
         }
+        else
+        {
+            //intentionally blank
+        }
+       
     }
 }

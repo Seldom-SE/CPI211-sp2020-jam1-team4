@@ -19,7 +19,10 @@ public class GameTimer : MonoBehaviour
     {
         int timeRemaining = duration - (int)(Time.time - startTime);
         if (timeRemaining <= 0)
+        {
+            Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene("Game Over");
+        }
         text.text = "TIME: " + timeRemaining / 60 + ':' + (timeRemaining % 60).ToString("00");
     }
 }

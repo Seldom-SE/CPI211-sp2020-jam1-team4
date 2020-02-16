@@ -8,7 +8,7 @@ public class climb : MonoBehaviour
     Transform player;
     GameObject playerObj;
     bool canClimb = true;
-    float speed = 3;
+    float speed = 15;
 
     //entering the trigger collider
      void OnTriggerEnter(Collider other)

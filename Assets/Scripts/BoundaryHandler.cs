@@ -13,7 +13,10 @@ public class BoundaryHandler : MonoBehaviour
     {
         print(other.name);
 
-        StartCoroutine(FadeOutObj(other.gameObject));
+        if (other.CompareTag("Obstacle"))
+        {
+            StartCoroutine(FadeOutObj(other.gameObject));
+        }
     }
 
     private IEnumerator FadeOutObj(GameObject go)

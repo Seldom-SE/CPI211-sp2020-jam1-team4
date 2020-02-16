@@ -12,7 +12,7 @@ public class BallController : MonoBehaviour
 {
     [Header("Object References")]
     public GameObject ballObj;
-    private Rigidbody _ballRigidbody
+    public Rigidbody BallRigidbody
     {
         get
         {
@@ -27,6 +27,7 @@ public class BallController : MonoBehaviour
      */
     public GameObject ballFollower;
     public GameObject cameraObj;
+    public PlayerController mainPlayer;
 
     [Header("Movement")]
     public float movementSpeed = 1f;
@@ -39,7 +40,17 @@ public class BallController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         //Increases the max velocity as it's initially really low
-        _ballRigidbody.maxAngularVelocity = movementSpeed;
+        BallRigidbody.maxAngularVelocity = movementSpeed;
+    }
+
+    private void Start()
+    {
+        mainPlayer.isInControl = false;
+    }
+
+    private void OnDestroy()
+    {
+        mainPlayer.isInControl = true;
     }
 
     private void FixedUpdate()
@@ -66,10 +77,10 @@ public class BallController : MonoBehaviour
 
         //Note: Both use ballfollower.transform because the camera is based on that obj therefore the direction of the follower is (for the most part) the same as the camera
         if (hInput != 0)
-            _ballRigidbody.angularVelocity += ballFollower.transform.right * movementSpeed * hInput;
+            BallRigidbody.angularVelocity += ballFollower.transform.right * movementSpeed * hInput;
 
         if(vInput != 0)
-            _ballRigidbody.angularVelocity += ballFollower.transform.forward * movementSpeed * vInput;
+            BallRigidbody.angularVelocity += ballFollower.transform.forward * movementSpeed * vInput;
     }
 
     /// <summary>

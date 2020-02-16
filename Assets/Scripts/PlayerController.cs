@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public float lookSensitivity = 1f;
     public float maxVerticalAngle = 60f;
     public float movementSpeed = 1f;
+    public bool isInControl = true;
 
     private void Awake()
     {
@@ -33,8 +34,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MouseControl();
-        MovementControl();
+        if(isInControl)
+        {
+            MouseControl();
+            MovementControl();
+        }
     }
 
     /// <summary>

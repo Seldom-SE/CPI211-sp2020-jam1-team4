@@ -293,7 +293,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'TIME: 3:00
+  m_Text: 'TIME: 4:00
 
 '
 --- !u!222 &103553557
@@ -1892,6 +1892,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7295261539819255674, guid: 86ac809464aa92b4ba85d0d7c0d174c7,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7295261539819255675, guid: 86ac809464aa92b4ba85d0d7c0d174c7,
         type: 3}
       propertyPath: m_Name
@@ -2268,7 +2273,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!64 &1730288526
 MeshCollider:

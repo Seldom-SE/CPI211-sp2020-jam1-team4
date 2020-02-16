@@ -258,7 +258,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'TIME: 4:00
+  m_Text: 'TIME: 5:00
 
 '
 --- !u!222 &103553557
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96e6f904313be4c67a105bb6bb3c1836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 240
+  duration: 300
 --- !u!1001 &201373102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -511,6 +511,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 103553555}
+  - {fileID: 1640740651}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

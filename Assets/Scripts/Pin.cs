@@ -15,11 +15,10 @@ public class Pin : MonoBehaviour
 
     private void Update()
     {
-        if (!fallen && gameObject.transform.rotation.eulerAngles.z < 300)
+        if (!fallen && gameObject.GetComponent<Rigidbody>().velocity.magnitude > 1)
         {
-            
+            scoreObject.AddScore();
             fallen = true;
-            
         }
     }
 }

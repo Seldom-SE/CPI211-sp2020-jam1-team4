@@ -109,6 +109,7 @@ MonoBehaviour:
   firePoint: {fileID: 2127921274}
   ballPrefab: {fileID: 2080454894835197499, guid: 9261b3c60840e6f46be96dd80dbdf9b1,
     type: 3}
+  mainPlayer: {fileID: 7295261539819255665}
   shootForce: 250000
 --- !u!1 &2127921273
 GameObject:
@@ -134,7 +135,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2127921273}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.5}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 406103784}
@@ -353,3 +354,4 @@ MonoBehaviour:
   lookSensitivity: 100
   maxVerticalAngle: 60
   movementSpeed: 5
+  isInControl: 1

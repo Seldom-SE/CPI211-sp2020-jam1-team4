@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     public bool climbing = false;//added boolean climbing to know when we're climbing
     public float lookSensitivity = 1f;
     public float maxVerticalAngle = 60f;
-    public float movementSpeed = 15f;
+    public float movementSpeed = 180f;
     public bool isInControl = true;
 
     private void Awake()

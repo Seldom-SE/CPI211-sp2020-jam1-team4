@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Script to control the (bowling) ball's movement
@@ -46,11 +47,13 @@ public class BallController : MonoBehaviour
     private void Start()
     {
         mainPlayer.isInControl = false;
+        GameObject.Find("Objective").GetComponent<Text>().text = "Objective: Knock down the pins! Click to explode.";
     }
 
     private void OnDestroy()
     {
         mainPlayer.isInControl = true;
+        GameObject.Find("Objective").GetComponent<Text>().text = "Objective: Climb a tower and shoot a drone onto a platform";
     }
 
     private void FixedUpdate()
